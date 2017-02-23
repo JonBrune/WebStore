@@ -28,17 +28,27 @@ namespace WebStore.Controllers
         {
             //ProductsViewModel model = new ProductsViewModel();
             //model.
+            ViewBag.CategoriesID = new SelectList(db.Categories, "ID", "name");
             return View();
 
         }
 
         // POST: Products/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(Products products)
         {
-            ProductsViewModel model = new ProductsViewModel();
+            //ProductsViewModel model = new ProductsViewModel();
+            if(ModelState.IsValid)
+            {
+                db.Products.Add(products);
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
 
-            return View();
+            ViewBag.MovieCategoryID = new SelectList(db.Categories, "ID", "Name", products.CategoriesID);
+            return View(products);
+
+            //return View();
 
         }
 
