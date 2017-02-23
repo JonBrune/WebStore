@@ -45,7 +45,7 @@ namespace WebStore.Controllers
                 return RedirectToAction("Index");
             }
 
-            ViewBag.MovieCategoryID = new SelectList(db.Categories, "ID", "Name", products.CategoriesID);
+            ViewBag.categoriesID = new SelectList(db.Categories, "ID", "Name", products.CategoriesID);
             return View(products);
 
             //return View();
@@ -53,9 +53,21 @@ namespace WebStore.Controllers
         }
 
         // GET: Products/Edit/5
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int? id)
         {
-            return View();
+            if (id == null)
+            {
+                return View("Not Found");
+            }
+            Products product = (from item in db.Products
+                                where item.ID == id.Value
+                                select item).SingleOrDefault();
+            if (product == null)
+            {
+                return View("Not found");
+            }
+            ViewBag.categoriesID = new SelectList(db.Categories, "ID", "Name", product.CategoriesID);
+            return View(product);
         }
 
         // POST: Products/Edit/5
