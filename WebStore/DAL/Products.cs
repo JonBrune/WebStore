@@ -10,7 +10,7 @@ namespace WebStore.DAL
         public double price { get; set; }
         public string description { get; set; } 
         public DateTime date { get; set; }
-        //public int CategoriesID { get; set; }
+        public int CategoriesID { get; set; }
         public virtual Categories Categories { get; set; }
         public Products()
         {
