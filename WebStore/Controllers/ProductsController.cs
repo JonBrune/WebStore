@@ -23,25 +23,23 @@ namespace WebStore.Controllers
         }
 
         // GET: Products/Create
+        [HttpGet]
         public ActionResult Create()
         {
+            //ProductsViewModel model = new ProductsViewModel();
+            //model.
             return View();
+
         }
 
         // POST: Products/Create
         [HttpPost]
         public ActionResult Create(FormCollection collection)
         {
-            try
-            {
-                // TODO: Add insert logic here
+            ProductsViewModel model = new ProductsViewModel();
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            return View();
+
         }
 
         // GET: Products/Edit/5
@@ -56,6 +54,7 @@ namespace WebStore.Controllers
         {
             try
             {
+
                 // TODO: Add update logic here
 
                 return RedirectToAction("Index");
@@ -76,16 +75,19 @@ namespace WebStore.Controllers
         [HttpPost]
         public ActionResult Delete(int id, FormCollection collection)
         {
-            try
+            
+            return View();
+        }
+        public List<SelectListItem> getCategories()
+        {
+            List<SelectListItem> categories = new List<SelectListItem>();
+            categories.Add(new SelectListItem() { Value = "", Text = " - Choose category -" });
+            db.Categories.ToList().ForEach((x) =>
             {
-                // TODO: Add delete logic here
+                categories.Add(new SelectListItem() { Value = x.ID.ToString(), Text = x.name });
 
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            });
+            return categories;
         }
     }
 }
