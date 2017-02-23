@@ -12,11 +12,7 @@ namespace WebStore.Controllers
         public ActionResult Index()
         {
 
-            return View();
-        }
-        public ActionResult Movies()
-        {
-            return View();
+            return RedirectToAction("Index", "Products");
         }
 
         public ActionResult About()
