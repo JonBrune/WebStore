@@ -1,11 +1,10 @@
 ﻿@model IEnumerable<WebStore.DAL.Products>
 
+
 @{
     ViewBag.Title = "Products";
 }
-<h2>Title 123</h2>
-
-<p> @Html.ActionLink("Create", "Create")</p> delete this later :p
+<h2>Hedinn&John's excellent webstore</h2>
 
 
 
@@ -22,8 +21,11 @@
                     <div class="pull-right">
                         <a href="#" class="btn btn-success btm-sm" role="button">Price @Html.DisplayFor(modelItem => item.price)<span class="glyphicon glyphicon-usd"></span></a>
                     </div>
-                    <div class="pricetext">
-                        <a href="#" class="btn btn-warning btm-sm" role="button">Edit <span class="glyphicon glyphicon-cog"></span></a>
+                    <div class="pricetext">             
+                            <a href="@Url.Action("Edit", "Products", new { id = item.ID } )" class="btn btn-warning">
+                               Edit
+                                <span class="glyphicon glyphicon-cog"></span>
+                            </a>
                     </div>
                 </div>
             </div>     
