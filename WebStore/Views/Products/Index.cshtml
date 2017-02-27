@@ -1,35 +1,39 @@
-﻿@model IEnumerable<WebStore.DAL.Products>
+﻿@model WebStore.ViewModels.ProductsViewModel
 
+    @{
+        ViewBag.Title = "Products";
+    }
+    <h2>Hedinn&John's excellent webstore</h2>
 
-@{
-    ViewBag.Title = "Products";
+    @foreach (var item in Model.categories.ToList())
+    {
+     <a href="@Url.Action("Category", "Products", new { id = item.ID } )" class="btn btn-success btm-sm" role="button">@Html.DisplayFor(y => item.name)</a><text>&nbsp;</text>
 }
-<h2>Hedinn&John's excellent webstore</h2>
+    <a href="@Url.Action("Index", "Products")" class="btn btn-success btm-sm" role="button" id="allcategories">All Categories</a>
+    <br /><br />
+    @foreach (var item in Model.products.ToList())
+    {
 
-
-
-@foreach (var item in Model)
-{
-<div class="container-fluid">
-    <div class="col">
-        <div class="col-md-3">
-            <div class="productbox">
-                <img src="http://lorempixel.com/400/200/" class="img-responsive">
-                <div class="producttitle">@Html.DisplayFor(modelItem => item.name)</div>
-                <p class="text-justify">@Html.DisplayFor(modelItem => item.description)</p>
-                <div class="productprice">
-                    <div class="pull-right">
-                        <a href="#" class="btn btn-success btm-sm" role="button">Price @Html.DisplayFor(modelItem => item.price)<span class="glyphicon glyphicon-usd"></span></a>
-                    </div>
-                    <div class="pricetext">             
-                            <a href="@Url.Action("Edit", "Products", new { id = item.ID } )" class="btn btn-warning">
-                               Edit
-                                <span class="glyphicon glyphicon-cog"></span>
-                            </a>
+        <div class="container-fluid">
+            <div class="col">
+                <div class="col-md-3">
+                    <div class="productbox">
+                        <img src="http://lorempixel.com/400/200/" class="img-responsive" alt="image">
+                        <div class="producttitle">@Html.DisplayFor(modelItem => item.name)</div>
+                        <p class="text-justify">@Html.DisplayFor(modelItem => item.description)</p>
+                        <div class="productprice">
+                            <div class="pull-right">
+                                <a href="@Url.Action("Details", "Products", new { id = item.ID } )" class="btn btn-success btm-sm" role="button">Details</a>
+                            </div>
+                            <div class="pricetext">
+                                <a href="@Url.Action("Edit", "Products", new { id = item.ID } )" class="btn btn-warning">
+                                    Edit
+                                    <span class="glyphicon glyphicon-cog"></span>
+                                </a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>     
+            </div>
         </div>
-        </div>
-    </div>
-}
+    }

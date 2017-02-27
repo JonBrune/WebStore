@@ -1,0 +1,29 @@
+﻿@model WebStore.DAL.Products
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+
+<div class="container-fluid">
+    <div class="col">
+        <div class="col-md-3">
+            <div class="productbox">
+                <br />
+                <img src="http://lorempixel.com/400/200/" class="img-responsive">
+                <h3 class="producttitle">@Html.DisplayFor(m => m.name)</h3>
+                <h4 class="text-justify">@Html.DisplayFor(m => m.description)</h4>
+                <p class="text-justify">@Html.DisplayFor(m => m.longDescription)</p>
+                <p class="text-justify">Price: @Html.DisplayFor(m => m.price)$</p>
+                <p class="text-justify">Release Date:@Html.DisplayFor(m => m.date)</p>
+              
+            </div>
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    </div>
+</div>
+
+
