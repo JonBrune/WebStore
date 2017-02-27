@@ -4,12 +4,28 @@
         ViewBag.Title = "Products";
     }
     <h2>Hedinn&John's excellent webstore</h2>
-    
+    <ul class="nav nav-pills">
     @foreach (var item in Model.categories.ToList())
     {
-     <a href="@Url.Action("Category", "Products", new { id = item.ID } )" class="btn btn-success btm-sm" role="button">@Html.DisplayFor(y => item.name)</a><text>&nbsp;</text>
-}
-    <a href="@Url.Action("Index", "Products")" class="btn btn-success btm-sm" role="button" id="allcategories">All Categories</a>
+
+        if (Model.SelectedID == item.ID)
+        {
+            <li class="active"><a href="@Url.Action("Category", "Products", new { id = item.ID })">@Html.DisplayFor(y => item.name)</a></li>
+        }
+        else
+        {
+            <li><a href="@Url.Action("Category", "Products", new { id = item.ID })">@Html.DisplayFor(y => item.name)</a></li>
+        }
+    }
+        @if (Model.SelectedID == 0)
+        {
+            <li class="active"><a href="@Url.Action("Index", "Products")"  id="allcategories">All Categories</a></li>
+        }
+        else 
+        {
+            <li><a href="@Url.Action("Index", "Products")" id="allcategories">All Categories</a></li>
+        }
+    </ul>
     <br /><br />
     @foreach (var item in Model.products.ToList())
     {

@@ -21,6 +21,7 @@ namespace WebStore.Controllers
             blerg.db = db;
             blerg.products = db.Products.ToList();
             blerg.categories = db.Categories.ToList();
+            blerg.SelectedID = 0;
             return View(blerg);
         }
 
@@ -30,6 +31,7 @@ namespace WebStore.Controllers
             blerg.db = db;
             blerg.products = (from item in db.Products where item.CategoriesID == id.Value select item);
             blerg.categories = db.Categories.ToList();
+            blerg.SelectedID = id.Value;
          
             return View("Index", blerg);
         }

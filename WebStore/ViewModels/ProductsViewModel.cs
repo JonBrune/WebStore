@@ -19,5 +19,6 @@ namespace WebStore.ViewModels
         public IEnumerable<Categories> categories { get; set; }
         public IEnumerable<Products> products { get; set; }
         public DataContext db { get; set; }
+        public int SelectedID { get; set; }
     }
 }

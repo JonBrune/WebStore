@@ -8,10 +8,7 @@ namespace WebStore.DAL
     public class DataInitializer : System.Data.Entity.DropCreateDatabaseAlways<DataContext>
     {
         protected override void Seed(DataContext context)
-
-
         {
-
 
             var categories = new List<Categories>
             {
