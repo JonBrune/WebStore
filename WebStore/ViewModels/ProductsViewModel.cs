@@ -16,6 +16,7 @@ namespace WebStore.ViewModels
         public string description { get; set; }
         public DateTime date { get; set; }
         public int CategoryID { get; set; }
+        public int Stock { get; set; }
         public IEnumerable<Categories> categories { get; set; }
         public IEnumerable<Products> products { get; set; }
         public DataContext db { get; set; }
