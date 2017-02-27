@@ -4,7 +4,7 @@
         ViewBag.Title = "Products";
     }
     <h2>Hedinn&John's excellent webstore</h2>
-
+    
     @foreach (var item in Model.categories.ToList())
     {
      <a href="@Url.Action("Category", "Products", new { id = item.ID } )" class="btn btn-success btm-sm" role="button">@Html.DisplayFor(y => item.name)</a><text>&nbsp;</text>
