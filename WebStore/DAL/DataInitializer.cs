@@ -5,7 +5,7 @@ using System.Web;
 
 namespace WebStore.DAL
 {
-    public class DataInitializer : System.Data.Entity.DropCreateDatabaseAlways<DataContext>
+    public class DataInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<DataContext>
     {
         protected override void Seed(DataContext context)
         {

@@ -18,7 +18,7 @@ namespace WebStore.DAL
         public double price { get; set; }
 
         [Required]
-        [Display(Name = "Description")]
+        [Display(Name = "Short Description")]
         public string description { get; set; }
 
         [Display(Name = "Long Description")]
@@ -29,8 +29,8 @@ namespace WebStore.DAL
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime date { get; set; }
 
-        [Display(Name = "In stock")]
         [Required]
+        [Display(Name = "In stock")]
         public int Stock { get; set; }
         
         [Display(Name = "Category ID")]
